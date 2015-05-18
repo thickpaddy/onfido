@@ -1,6 +1,6 @@
 module Onfido
   class Resource
-    VALID_HTTP_METHODS = %i(get post)
+    VALID_HTTP_METHODS = %w(get post).map(&:to_sym)
 
     include Requestable
 

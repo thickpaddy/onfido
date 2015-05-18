@@ -3,7 +3,8 @@ gemspec
 
 group :development, :test do
   gem 'pry'
-  gem 'pry-byebug'
+  gem 'debugger', platform: :ruby_19
+  gem 'pry-byebug', platforms: [:ruby_20, :ruby_21, :ruby_22]
   gem 'pry-stack_explorer'
 end
 

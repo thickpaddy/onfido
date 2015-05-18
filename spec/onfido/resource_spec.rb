@@ -16,7 +16,7 @@ describe Onfido::Resource do
   end
 
   describe '#method_missing' do
-    %i(put delete patch).each do |method|
+    %w(put delete patch).map(&:to_sym).each do |method|
       context "for unsupported HTTP method: #{method}" do
         it 'raises an error' do
           expect {
@@ -26,7 +26,7 @@ describe Onfido::Resource do
       end
     end
 
-    %i(get post).each do |method|
+    %w(get post).map(&:to_sym).each do |method|
       context "for supported HTTP method: #{method}" do
         let(:url) { endpoint + path }
         let(:payload) { {postcode: 'SE1 4NG'} }
