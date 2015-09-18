@@ -14,9 +14,10 @@ module Onfido
       )
     end
 
-    def all(applicant_id, page: 1, per_page: 20)
+    def all(applicant_id, opts={})
+      opts = {page: 1, per_page: 20}.merge(opts)
       get(
-        url: url_for("applicants/#{applicant_id}/checks?page=#{page}&per_page=#{per_page}"),
+        url: url_for("applicants/#{applicant_id}/checks?page=#{opts[:page]}&per_page=#{opts[:per_page]}"),
         payload: {}
       )
     end

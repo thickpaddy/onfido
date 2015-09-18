@@ -11,8 +11,9 @@ module Onfido
       get(url: url_for("applicants/#{applicant_id}"), payload: {})
     end
 
-    def all(page: 1, per_page: 20)
-      get(url: url_for("applicants?page=#{page}&per_page=#{per_page}"), payload: {})
+    def all(opts={})
+      opts = {page: 1, per_page: 20}.merge(opts)
+      get(url: url_for("applicants?page=#{opts[:page]}&per_page=#{opts[:per_page]}"), payload: {})
     end
   end
 end
